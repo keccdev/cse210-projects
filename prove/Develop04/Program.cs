@@ -10,22 +10,22 @@ abstract class Activity
 
     public void SetDuration()
     {
-        Console.Write("Ingrese la duración de la actividad en segundos: ");
+        Console.Write("Enter the duration of the activity in seconds: ");
         durationInSeconds = Convert.ToInt32(Console.ReadLine());
     }
 
     public virtual void DisplayStartMessage()
     {
-        Console.WriteLine($"Comenzando la actividad: {description}");
+        Console.WriteLine($"Starting activity: {description}");
         Console.WriteLine(description);
-        Console.WriteLine("Prepárate para empezar...");
+        Console.WriteLine("Get ready to begin...");
         Thread.Sleep(2000);
     }
 
     public virtual void DisplayEndMessage(string activityName)
     {
-        Console.WriteLine($"¡Buen trabajo! Has completado la actividad: {activityName}");
-        Console.WriteLine($"Tiempo total: {durationInSeconds} segundos");
+        Console.WriteLine($"Great job! You have completed the activity: {activityName}");
+        Console.WriteLine($"Total time: {durationInSeconds} seconds");
         Thread.Sleep(2000);
     }
 }
@@ -34,20 +34,20 @@ class BreathingActivity : Activity
 {
     public BreathingActivity()
     {
-        description = "Esta actividad te ayudará a relajarte al caminar a través de la inhalación y exhalación lentamente. Despeja tu mente y concéntrate en tu respiración.";
+        description = "This activity will help you relax as you walk through slow inhalation and exhalation. Clear your mind and focus on your breathing.";
     }
 
     public override void PerformActivity()
     {
-        Console.WriteLine("Inhala...");
+        Console.WriteLine("Inhale...");
         Thread.Sleep(2000);
-        Console.WriteLine("Exhala...");
+        Console.WriteLine("Exhale...");
         Thread.Sleep(2000);
         for (int i = 0; i < durationInSeconds / 4 - 1; i++)
         {
-            Console.WriteLine("Inhala...");
+            Console.WriteLine("Inhale...");
             Thread.Sleep(2000);
-            Console.WriteLine("Exhala...");
+            Console.WriteLine("Exhale...");
             Thread.Sleep(2000);
         }
     }
@@ -56,15 +56,15 @@ class BreathingActivity : Activity
 class ReflectionActivity : Activity
 {
     private string[] reflectionPrompts = {
-        "Piensa en un momento en el que defendiste a otra persona.",
-        "Piensa en un momento en el que hiciste algo realmente difícil.",
-        "Piensa en un momento en el que hayas ayudado a alguien que lo necesitaba.",
-        "Piensa en un momento en el que hiciste algo verdaderamente desinteresado."
+        "Think of a moment when you stood up for someone else.",
+        "Think of a moment when you did something really challenging.",
+        "Think of a moment when you helped someone in need.",
+        "Think of a moment when you did something truly selfless."
     };
 
     public ReflectionActivity()
     {
-        description = "Esta actividad te ayudará a reflexionar sobre los momentos de tu vida en los que has demostrado fortaleza y resiliencia. Esto te ayudará a reconocer el poder que tienes y cómo puedes usarlo en otros aspectos de tu vida.";
+        description = "This activity will help you reflect on moments in your life where you've demonstrated strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
     }
 
     public override void PerformActivity()
@@ -76,7 +76,7 @@ class ReflectionActivity : Activity
             Thread.Sleep(2000);
             for (int i = 0; i < 5; i++)
             {
-                Console.WriteLine("Reflexiona sobre la pregunta...");
+                Console.WriteLine("Reflect on the question...");
                 Thread.Sleep(2000);
             }
         }
@@ -86,16 +86,16 @@ class ReflectionActivity : Activity
 class ListingActivity : Activity
 {
     private string[] listingPrompts = {
-        "¿Quiénes son las personas que aprecias?",
-        "¿Cuáles son tus fortalezas personales?",
-        "¿Quiénes son las personas a las que has ayudado esta semana?",
-        "¿Cuándo has sentido el Espíritu Santo este mes?",
-        "¿Quiénes son algunos de tus héroes personales?"
+        "Who are the people you appreciate?",
+        "What are your personal strengths?",
+        "Who are the people you've helped this week?",
+        "When have you felt the Holy Spirit this month?",
+        "Who are some of your personal heroes?"
     };
 
     public ListingActivity()
     {
-        description = "Esta actividad te ayudará a reflexionar sobre las cosas buenas de tu vida al hacer que hagas una lista de tantas cosas como puedas en un área determinada.";
+        description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a given area.";
     }
 
     public override void PerformActivity()
@@ -103,7 +103,7 @@ class ListingActivity : Activity
         Random rnd = new Random();
         Console.WriteLine(listingPrompts[rnd.Next(listingPrompts.Length)]);
         Thread.Sleep(2000);
-        Console.WriteLine("¡Comienza a enumerar!");
+        Console.WriteLine("Start listing!");
         Thread.Sleep(2000);
     }
 }
@@ -114,17 +114,17 @@ class MindfulnessProgram
     {
         while (true)
         {
-            Console.WriteLine("Selecciona una actividad:");
-            Console.WriteLine("1. Actividad Respiratoria");
-            Console.WriteLine("2. Actividad de Reflexión");
-            Console.WriteLine("3. Actividad de Enumeración");
-            Console.WriteLine("4. Salir");
+            Console.WriteLine("Select an activity:");
+            Console.WriteLine("1. Breathing Activity");
+            Console.WriteLine("2. Reflection Activity");
+            Console.WriteLine("3. Listing Activity");
+            Console.WriteLine("4. Exit");
 
-            Console.Write("Ingrese su elección: ");
+            Console.Write("Enter your choice: ");
             int choice;
             if (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 4)
             {
-                Console.WriteLine("Selección no válida. Por favor, intente de nuevo.");
+                Console.WriteLine("Invalid selection. Please try again.");
                 continue;
             }
 
@@ -142,7 +142,7 @@ class MindfulnessProgram
                     currentActivity = new ListingActivity();
                     break;
                 case 4:
-                    Console.WriteLine("¡Hasta luego!");
+                    Console.WriteLine("Goodbye!");
                     return;
             }
 
