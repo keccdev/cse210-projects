@@ -42,29 +42,29 @@ class MyProgram
 {
     static void Main()
     {
-        // Crear algunos videos
+        // Create some videos
         var video1 = new Video("Video Title 1", "Author 1", 300);
         var video2 = new Video("Video Title 2", "Author 2", 240);
         var video3 = new Video("Video Title 3", "Author 3", 180);
 
-        // Agregar comentarios a los videos
-        video1.AddComment("User1", "¡Gran video!");
-        video1.AddComment("User2", "Me encantó la explicación.");
-        video2.AddComment("User3", "Buena presentación.");
-        video3.AddComment("User4", "Tema interesante.");
+        // Add comments to the videos
+        video1.AddComment("User1", "Great video!");
+        video1.AddComment("User2", "Loved the explanation.");
+        video2.AddComment("User3", "Good presentation.");
+        video3.AddComment("User4", "Interesting topic.");
 
-        // Crear una lista de videos
+        // Create a list of videos
         var videos = new List<Video> { video1, video2, video3 };
 
-        // Mostrar información para cada video
+        // Display information for each video
         foreach (var video in videos)
         {
-            Console.WriteLine($"Título: {video.Title}");
-            Console.WriteLine($"Autor: {video.Author}");
-            Console.WriteLine($"Duración: {video.Duration} segundos");
-            Console.WriteLine($"Número de comentarios: {video.GetCommentCount()}");
+            Console.WriteLine($"Title: {video.Title}");
+            Console.WriteLine($"Author: {video.Author}");
+            Console.WriteLine($"Duration: {video.Duration} seconds");
+            Console.WriteLine($"Number of comments: {video.GetCommentCount()}");
 
-            Console.WriteLine("Comentarios:");
+            Console.WriteLine("Comments:");
             foreach (var comment in video.Comments)
             {
                 Console.WriteLine($"- {comment.UserName}: {comment.Text}");
@@ -74,3 +74,4 @@ class MyProgram
         }
     }
 }
+
